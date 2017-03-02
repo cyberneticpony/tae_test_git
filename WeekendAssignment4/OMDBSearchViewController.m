@@ -79,7 +79,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (section == 0){
-        NSLog(@"Test: %i", (int)[self.arrayOfResults count]);
         return [self.arrayOfResults count];
     }
     else
