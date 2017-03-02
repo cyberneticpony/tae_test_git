@@ -14,7 +14,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     return YES;
@@ -53,6 +52,16 @@
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;
+
+- (id)managedObjectContext
+{
+    if (!self.moc)
+    {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{self.moc = self.persistentContainer.viewContext;});
+    }
+    return self.moc;
+}
 
 - (NSPersistentContainer *)persistentContainer {
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
